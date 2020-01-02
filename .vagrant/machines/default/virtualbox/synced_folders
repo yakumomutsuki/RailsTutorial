@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/rails_tutorial":{"create":true,"owner":"vagrant","group":"vagrant","guestpath":"/home/vagrant/rails_tutorial","hostpath":"/Users/munetaka/github/RailsTutorial","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/munetaka/github/RailsTutorial","disabled":false,"__vagrantfile":true}}}
