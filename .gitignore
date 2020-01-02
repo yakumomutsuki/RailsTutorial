@@ -1,3 +1,5 @@
 sample_app/tmp/cache
 sample_app/tmp
 sample_app/config
+sample_app/log
+sample_app/db
