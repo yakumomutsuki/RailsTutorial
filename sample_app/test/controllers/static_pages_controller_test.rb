@@ -9,12 +9,16 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get root" do
     get root_url
     assert_response :success
+    # header要素があり、かつdiv -> a要素内のテキストが一致するか
+    assert_select "header div a", "sample app"
+    # footer要素があるか
+    assert_select "footer"
   end
 
   test "should get home" do
     get static_pages_home_url
     assert_response :success
-    assert_select "title", "Home | #{@base_title}"
+    assert_select "title", "#{@base_title}"
   end
 
   test "should get help" do
