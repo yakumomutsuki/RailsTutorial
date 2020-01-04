@@ -3,7 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(name: 'Example User', email: 'user@example.com')
+    @user = User.new(name: 'Example User', email: 'user@example.com',
+                     password: 'foobar', password_confirmation: 'foobar')
   end
 
   test 'should be valid' do
@@ -54,5 +55,21 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user.email = @user.email.upcase
     @user.save
     assert_not duplicate_user.valid?
+  end
+
+  test 'password should be present (not blank)' do
+    @user.password = @user.password_confirmation = 'a' * 5
+    assert_not @user.valid?
+  end
+
+  test 'password should have a minimum length' do
+    @user.password = @user.password_confirmation = 'a' * 5
+    assert_not @user.valid?
+  end
+
+  test 'valid name, email but invalid password' do
+    @user = User.new(name: 'Example User', email: 'user@example.com',
+                     password: 'fooba', password_confirmation: 'fooba')
+    assert_not @user.valid?
   end
 end
