@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+/* mixins, variables, etc. */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 /* universal */
 
 /**
@@ -94,4 +101,18 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 1rem;
+  @include box_sizing;
 }
