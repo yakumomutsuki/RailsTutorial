@@ -6,7 +6,33 @@
       <ul class="nav navbar-nav navbar-right mr-auto">
         <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Help", help_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Log in", '#', class: "nav-link" %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Users", '#', class: "nav-link" %></li>
+
+          <div class="dropdown">
+            <!-- 切替ボタンの設定 -->
+            <a id="AccountMenuLink"
+               class="nav-link dropdown-toggle"
+               href="#"
+               role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+            >
+              Account
+            </a>
+            <!-- ドロップメニューの設定 -->
+            <ul class="dropdown-menu" aria-labelledby="AccountMenuLink">
+              <li><%= link_to "Profile", current_user, class: 'dropdown-item' %></li>
+              <li><%= link_to "Settings", '#', class: 'dropdown-item' %></li>
+              <li class="dropdown-divider"></li>
+              <li><%= link_to "Log out", logout_path, class: 'dropdown-item', method: :delete %></li>
+            </ul>
+          </div>
+
+        <% else %>
+          <li><%= link_to "Log in", login_path, class: 'nav-link' %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

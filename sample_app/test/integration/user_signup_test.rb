@@ -41,5 +41,6 @@ class UserSignupTest < ActionDispatch::IntegrationTest
     follow_redirect! # POSTの送信結果を以ってリダイレクト先に遷移するメソッド
     assert_template 'users/show'
     assert flash[:success]
+    assert is_logged_in?
   end
 end
